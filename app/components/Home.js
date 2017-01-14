@@ -23,14 +23,19 @@ class Home extends React.Component {
         });
     }
 
+    handleSubmit() {
+        console.log(this.state.code);
+    }
+
     render() {
         var options = {
-            lineNumbers: true
+            lineNumbers: true,
+            mode: 'javascript'
         };
         return (
             <div className="ui container">
                 <CodeMirror value={this.state.code} onChange={this.updateCode.bind(this)} options={options}/>
-                <div className="ui button">Submit</div>
+                <div className="ui button" onClick={() => this.handleSubmit()}>Submit</div>
             </div>
         )
 

@@ -32,10 +32,23 @@ class Array extends React.Component {
 
     handleSubmit() {
 
-        var a = eval(this.state.code);
-        console.log(a);
-
+        try {
+            var success = true;
+            try {
+                eval(this.state.code);
+            } catch (e) {
+                success = false;
+                alert(e);
+            }
+            if (success) {
+                var a = eval(this.state.code);
+                console.log(a);
+            }
+        } catch(e) {
+            alert(e)
+        }
     }
+
 
     render() {
         var options = {
@@ -69,11 +82,7 @@ class Array extends React.Component {
                                     </a>
                                 </div>
                                 <div className="ui segment">
-                                    <div className="description">
-                                        <p>Declare an array named studentArray and add two string to it. One is your
-                                            full name
-                                            and the second is github username</p>
-                                    </div>
+                                    <p>Declare an array named <strong>studentArray</strong> and add two string to it. One is your full name and the second is github username.</p>
                                 </div>
                             </header>
                         </div>

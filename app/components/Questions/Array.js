@@ -32,6 +32,12 @@ class Array extends React.Component {
 
     handleSubmit() {
 
+        if (!Array.isArray) {
+            Array.isArray = function(arg) {
+                return Object.prototype.toString.call(arg) === '[object Array]';
+            };
+        }
+
         try {
             var success = true;
             try {
@@ -42,7 +48,13 @@ class Array extends React.Component {
             }
             if (success) {
                 var a = eval(this.state.code);
-                console.log(a);
+
+                if (Array.isArray(a)) {
+                    console.log('hey its an array');
+                } else {
+                    console.log('please assign the studentArray to an array.');
+                }
+
             }
         } catch(e) {
             alert(e)

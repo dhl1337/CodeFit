@@ -50,7 +50,15 @@ class Array extends React.Component {
                 var a = eval(this.state.code);
 
                 if (Array.isArray(a)) {
-                    console.log('hey its an array');
+
+                    console.log(typeof a[0], typeof a[1]);
+                    if (typeof a[0] !== 'string') {
+                        console.log('please make sure name is a string');
+                    }
+
+                    if (typeof a[1] !== 'number') {
+                        console.log('please enter a number');
+                    }
                 } else {
                     console.log('please assign the studentArray to an array.');
                 }
